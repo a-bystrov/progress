@@ -1,0 +1,159 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Caros";
+  /* src: url(fonts/Caros.otf); */
+  src: url("../../progress/fonts/Caros.otf") format('truetype');
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress {
+  position: relative;
+  width: 320px;
+  height: 568px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Caros", sans-serif;
+  background: white;
+}
+
+.progressTitle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.containerProgressCircle {
+  width: 160px;
+  height: 250px;
+}
+
+.progressCircle {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  margin-top: 60px;
+  margin-bottom: 30px;
+  background: conic-gradient(#005ff9 270deg, #dae6ec 0deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  animation-name: none;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.progressCircle::before {
+  content: "";
+  background: white;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+}
+
+.states {
+  padding-top: 40px;
+}
+
+.state {
+  display: flex;
+  align-items: center;
+}
+
+.progressValueInput {
+  width: 50px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 15px;
+  text-align: center;
+  margin: 10px;
+  font-family: "Caros";
+  font-size: 15px;
+}
+
+.progressValueInput::-webkit-inner-spin-button, 
+.progressValueInput::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.progressValueInput {
+  -moz-appearance: textfield;
+}
+
+.stateCheckbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.stateCheckbox + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+.stateCheckbox + label::before {
+  content: "";
+  display: inline-block;
+  width: 50px;
+  height: 30px;
+  margin: 5px 10px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
+  background-image: url(images/checkboxOff.png);
+}
+
+.stateCheckbox:checked + label::before {
+  background-image: url(images/checkbox.png);
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .progress {
+    width: 568px;
+    height: 320px;
+    flex-direction: row;
+  }
+
+  .states {
+    padding: 0;
+    padding-left: 40px;
+  }
+
+  .containerProgressCircle {
+    width: 220px;
+    height: 160px;
+  }
+
+  .progressCircle {
+    margin: 0;
+    margin-left: 60px;
+  }
+}
